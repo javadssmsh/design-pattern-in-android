@@ -15,7 +15,8 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
 
-        //
+        //In the Factory pattern, we create an object without exposing the creation logic to the
+        // client and the client uses the same common interface to create a new type of object.
         ComputerFactory computerFactory = new ComputerFactory();
 
         Computer phone = computerFactory.getComputer("Phone");
