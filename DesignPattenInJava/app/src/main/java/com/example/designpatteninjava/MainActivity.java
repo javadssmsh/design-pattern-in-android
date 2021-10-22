@@ -4,9 +4,9 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 
-import com.example.designpatteninjava.model.ObjectPool;
-import com.example.designpatteninjava.model.Robot;
-import com.example.designpatteninjava.model.RobotsPool;
+import com.example.designpatteninjava.model.AccountCreationService;
+import com.example.designpatteninjava.model.LegacyBankAccount;
+import com.example.designpatteninjava.model.PersonalInfoDB;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -17,16 +17,22 @@ public class MainActivity extends AppCompatActivity {
 
 
         //create object poling
-        // is a software creational design pattern that uses a set of initialized objects kept
-        // ready to use – a "pool" – rather than allocating and destroying them on demand.
-        ObjectPool robotsPool = new RobotsPool();
 
-        Robot firstRobot = (Robot) robotsPool.create();
-        Robot secondRobot = (Robot) robotsPool.create();
+        LegacyBankAccount legacyBankAccount = new LegacyBankAccount(1, "Javad Shirkhani");
+        /* Won't work due to missing parameters!!
+        AccountCreationService accountCreationService = new AccountCreationService(legacyBankAccount.getID(), legacyBankAccount.getName())
+        */
+        PersonalInfoDB personalInfoDB = new PersonalInfoDB();
+        personalInfoDB.setName("John Smith");
+        personalInfoDB.setEmail("john@smith.com");
+        personalInfoDB.setAmount(1000L);
 
-        robotsPool.checkOut(firstRobot);
+        BankAccountAdapter bankAccountAdapter = new BankAccountAdapter(legacyBankAccount, personalInfoDB);
+        AccountCreationService accountCreationService = new AccountCreationService(bankAccountAdapter.getID(),
+                bankAccountAdapter.getName(), bankAccountAdapter.getEmail(), bankAccountAdapter.getAmount());
 
-        Robot thirdRobot = (Robot) robotsPool.checkIn();
+        accountCreationService.createAccount();
+
 
     }
 }
