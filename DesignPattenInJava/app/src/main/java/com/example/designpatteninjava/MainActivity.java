@@ -17,6 +17,8 @@ public class MainActivity extends AppCompatActivity {
 
 
         //create object poling
+        //The Adapter acts as a wrapper between two objects. It catches calls for one object and
+        // transforms them to format and interface recognizable by the second object.
 
         LegacyBankAccount legacyBankAccount = new LegacyBankAccount(1, "Javad Shirkhani");
         /* Won't work due to missing parameters!!
