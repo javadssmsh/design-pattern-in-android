@@ -4,9 +4,10 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 
-import com.example.designpatteninjava.model.ObjectPool;
-import com.example.designpatteninjava.model.Robot;
-import com.example.designpatteninjava.model.RobotsPool;
+import com.example.designpatteninjava.model.Bag;
+import com.example.designpatteninjava.model.Blue;
+import com.example.designpatteninjava.model.Purse;
+import com.example.designpatteninjava.model.Red;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -16,17 +17,22 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
 
-        //create object poling
-        // is a software creational design pattern that uses a set of initialized objects kept
-        // ready to use – a "pool" – rather than allocating and destroying them on demand.
-        ObjectPool robotsPool = new RobotsPool();
+        //create object
+        //The Bridge pattern is especially useful when dealing with cross-platform apps,
+        // supporting multiple types of database servers or working with several API providers of
+        // a certain kind (for example, cloud platforms, social networks, etc.)
 
-        Robot firstRobot = (Robot) robotsPool.create();
-        Robot secondRobot = (Robot) robotsPool.create();
+        Bag redBag = new Bag(new Red());
+        Bag blueBag = new Bag(new Blue());
 
-        robotsPool.checkOut(firstRobot);
+        Purse redPurse = new Purse(new Red());
+        Purse bluePurse = new Purse(new Blue());
 
-        Robot thirdRobot = (Robot) robotsPool.checkIn();
+        redBag.getColour();
+        blueBag.getColour();
+
+        redPurse.getColour();
+        bluePurse.getColour();
 
     }
 }
