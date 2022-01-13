@@ -4,9 +4,9 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 
-import com.example.designpatteninjava.model.ObjectPool;
+import com.example.designpatteninjava.model.Human;
 import com.example.designpatteninjava.model.Robot;
-import com.example.designpatteninjava.model.RobotsPool;
+import com.example.designpatteninjava.model.WorkManager;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -16,17 +16,20 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
 
-        //create object poling
-        // is a software creational design pattern that uses a set of initialized objects kept
-        // ready to use – a "pool" – rather than allocating and destroying them on demand.
-        ObjectPool robotsPool = new RobotsPool();
+        //composite design pattern
+        //It allows you to have a tree structure and ask each node in the tree structure to perform a task
 
-        Robot firstRobot = (Robot) robotsPool.create();
-        Robot secondRobot = (Robot) robotsPool.create();
+        Human human = new Human();
+        human.setName("John");
+        human.setDepartment("HR");
 
-        robotsPool.checkOut(firstRobot);
+        Robot robot = new Robot();
+        robot.setName("R2D2");
+        robot.setDepartment("Manufacturing");
 
-        Robot thirdRobot = (Robot) robotsPool.checkIn();
-
+        WorkManager workManager = new WorkManager();
+        workManager.add(human);
+        workManager.add(robot);
+        System.out.println(workManager);
     }
 }

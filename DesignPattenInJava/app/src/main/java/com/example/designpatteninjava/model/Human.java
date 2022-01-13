@@ -1,12 +1,12 @@
 package com.example.designpatteninjava.model;
 
-public class Robot implements Worker {
+public class Human implements Worker {
     private String name;
     private String department;
 
     @Override
     public void performTask() {
-        System.out.println(getClass().getName() + " performing a task!");
+        System.out.println(getClass().getName() + " performing the task.");
     }
 
     public String getName() {
@@ -26,6 +26,6 @@ public class Robot implements Worker {
     }
 
     public String toString(){
-        return("Robot: " + name + " from " + department);
+        return("Human: " + name + " from " + department);
     }
 }
